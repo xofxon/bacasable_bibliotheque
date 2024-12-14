@@ -1,0 +1,153 @@
+body {
+	background-color: #3a63ba;
+	margin:0;
+}
+.ensemble {
+	background-image: url("img/fondhaut.png");
+	background-repeat: repeat-x;
+	min-height: 419px;
+}
+
+.logomain {
+	text-align:center;
+}
+
+.corps {
+	position:absolute;
+	height:179px;
+	width:439px;
+	left:50%;
+	top:50%;
+	background-image: url("img/cadresaisie.png");
+	margin-top: -90px;
+	margin-left: -219px;
+}
+
+.pied {
+	background-image: url("img/fondbas.png");
+	background-repeat: repeat-x;
+	height:123px;
+	position:absolute;
+	min-width:100%;
+	bottom:0;
+}
+
+.citation {
+	position:fixed;
+	height:65px;
+	width:801px;
+	left:50%;
+	bottom:0%;
+	margin-left: -400px;
+	
+}
+
+.logobas {
+	position:absolute;
+	bottom:0;
+	right:0;
+	background-image: url("img/angledroit.png");
+	background-repeat:no-repeat;
+	height:398px;
+	width:290px;
+}
+
+.texte {
+	padding-right: 30px;
+	padding-left: 10px;
+}
+
+p {
+	font-family: Arial, sans-serif;
+
+}
+
+.titre {
+	font-weight:bolder;
+	text-align:center;
+	font-size:large;
+	color:#3a63ba;
+	margin-top: 10px;
+}
+
+.separation {
+	text-align:center;
+	margin-top: -25px;
+	
+}
+
+form {
+	margin-top: -7px;
+}
+
+label {
+	font-style:italic;
+	display: block;
+	text-align: right;
+	float: left;
+	width: 160px;
+	margin-top: 3px;
+	font-size:small;
+
+}
+
+input {
+	width: 200px;
+	border: #DDEEFF 1px solid;
+	background-color: #B1B7C1;
+	color:white;
+	float: right;
+}
+
+input:hover {
+	width: 200px;
+	cursor: pointer;
+	background-color: #85AEE6;
+}
+
+input:focus {
+	width: 200px;
+	cursor: pointer;
+	background-color: #85AEE6;
+}
+
+input[type="reset"]
+{
+	border: #DDEEFF 1px solid;
+	width: 100px;
+	background-color: #9AA1AA;
+	float: right;
+	margin-right: 3px;
+}
+
+input[type="reset"]:hover
+{
+	background-color: #E6484D;
+	cursor: pointer;
+}
+
+input[type="reset"]:focus
+{
+	background-color: #E6484D;
+	cursor: pointer;
+}
+
+input[type="submit"]
+{
+	border: #DDEEFF 1px solid;
+	width: 100px;
+	background-color: #9AA1AA;
+	float: right;
+}
+
+input[type="submit"]:hover
+{
+	background-color: #66CC33;
+	cursor: pointer;
+}
+
+input[type="submit"]:focus
+{
+	background-color: #66CC33;
+	cursor: pointer;
+}

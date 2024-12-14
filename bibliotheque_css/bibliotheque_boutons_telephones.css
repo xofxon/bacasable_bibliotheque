@@ -1,0 +1,84 @@
+/* Boutons */
+button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.Bouton_Ajouter {
+    /*background-color: #f9fd03ec;*/ /* Couleur différente pour le bouton Ajouter */
+    color: white;
+    background-image: url('../bibliotheque_images/ajouter_32x32.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+    width: 50px; /* Ajuster la largeur comme vous le souhaitez */
+    height: 50px; /* Ajuster la hauteur selon vos besoins */
+    background-size: cover; /* L'image couvre tout le bouton */
+    background-position: center; /* Centrer l'image dans le bouton */
+    border: none; /* Retirer les bordures */
+    color: transparent; /* Masquer le texte du bouton */
+
+}
+
+.Bouton_Consulter {
+    background-color: #4CAF50;
+    color: white;
+    background-image: url('../bibliotheque_images/consulter_32x32.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+
+.Bouton_Modifier {
+    background-color: #FFC107;
+    color: white;
+    background-image: url('../bibliotheque_images/modifier_32x32.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+
+.Bouton_Supprimer {
+    background-color: #f44336;
+    color: white;
+    background-image: url('../bibliotheque_images/supprimer_32x32.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+
+.Bouton_Imprimer {
+    background-color: #2196F3;
+    color: white;
+    background-image: url('../bibliotheque_images/bibliotheque_imprimer_32x32.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+
+/* Styles pour les boutons dans les scripts */
+button {
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.button-container {
+    position: sticky;
+    /*top: 0;*/
+    /*top: 45px; /* Ajustez selon la hauteur du h2 pour éviter le chevauchement */
+    background-color: white; /* Ajoutez une couleur de fond pour que le contenu reste visible */
+    z-index: 999; /* Moins élevé que le h2, mais suffisant pour être visible */
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Pour donner un léger effet de séparation */
+}
+

@@ -1,0 +1,53 @@
+/* Style pour les tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Ligne paires et impaires de couleur différente */
+table tr:nth-child(even) {
+    background-color: #e8f5e9; /* Vert clair */
+}
+
+table tr:nth-child(odd) {
+    background-color: #f1f8e9; /* Vert encore plus clair */
+}
+
+/* Survol d'une ligne */
+table tr:hover {
+    background-color: #c8e6c9; /* Vert plus foncé au survol */
+}
+
+/* Table - Colonnes triables et filtrables */
+th {
+    cursor: pointer;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+/* Survol de ligne pour les tables avec la classe interactive-table */
+.interactive-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Sélection de ligne pour les tables avec la classe interactive-table */
+.TableDesSeries tbody tr.selected {
+    background-color: hsla(232, 87%, 49%, 0.369);
+}
+
+/* Sélection de ligne pour les tables avec la classe interactive-table */
+.TableDesLivres tbody tr.selected {
+    background-color: hsla(345, 87%, 49%, 0.369);
+}

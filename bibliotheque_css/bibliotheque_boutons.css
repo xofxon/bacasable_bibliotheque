@@ -1,0 +1,110 @@
+/* Boutons */
+button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.Bouton_Ajouter {
+    background-color: #a8248c; /* Couleur différente pour le bouton Ajouter */
+    color: white;
+    background-image: url('../bibliotheque_images/bibliotheque_ajouter_32x32.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+
+.Bouton_Consulter {
+    background-color: #4CAF50;
+    color: white;
+    background-image: url('../bibliotheque_images/bibliotheque_consulter_32x32.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+
+.Bouton_Modifier {
+    background-color: #FFC107;
+    color: white;
+    background-image: url('../bibliotheque_images/bibliotheque_modifier_32x32.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+
+.Bouton_Supprimer {
+    background-color: #f44336;
+    color: white;
+    background-image: url('../bibliotheque_images/bibliotheque_supprimer_32x32.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+
+.Bouton_Imprimer {
+    background-color: #2196F3;
+    color: white;
+    background-image: url('../bibliotheque_images/bibliotheque_imprimer_32x32.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+
+/* Styles pour les boutons dans les scripts */
+button {
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.button-container {
+    position: sticky;
+    /*top: 0;*/
+    /*top: 45px; /* Ajustez selon la hauteur du h2 pour éviter le chevauchement */
+    background-color: white; /* Ajoutez une couleur de fond pour que le contenu reste visible */
+    z-index: 999; /* Moins élevé que le h2, mais suffisant pour être visible */
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Pour donner un léger effet de séparation */
+}
+
+.boutonGrisé {
+    opacity: 0.5;        /* Rendre le bouton plus clair */
+    pointer-events: none; /* Désactive les clics */
+    cursor: not-allowed;  /* Change le curseur */
+}
+
+/* Style pour le bouton */
+.menu-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Style pour le menu contextuel */
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    min-width: 160px;
+}
+
+/* Style pour chaque option du menu */
+.context-menu div {
+    padding: 12px 16px;
+    cursor: pointer;
+}
+
+/* Style lors du survol d'une option */
+.context-menu div:hover {
+    background-color: #ddd;
+}

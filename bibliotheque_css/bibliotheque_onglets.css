@@ -1,0 +1,43 @@
+/* Style pour les onglets */
+.tab {
+    padding: 10px;
+    margin-right: 5px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+}
+.tab-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+}
+/* Onglet actif */
+.tab.active {
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+/* Contenu des onglets (par défaut caché) */
+.tab-content-container {
+    display: none;
+    /*padding: 20px;*/
+    padding: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+/* Contenu actif */
+.tab-content-container.active {
+    display: block;
+}
+/* Bouton pour fermer un onglet */
+.close-tab-btn {
+    margin-left: 10px;
+    padding: 5px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}

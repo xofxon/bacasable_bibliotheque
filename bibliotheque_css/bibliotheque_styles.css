@@ -1,0 +1,245 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+}
+
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.table-container {
+    flex: 3; /* 3 parts out of 4 */
+    overflow-y: auto;
+}
+/*
+.tags-container {
+    /*flex: 1; /* 1 part out of 4 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-top: 1px solid #ccc;
+}
+    */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+}
+.tag {
+    background-color: #ccffcc; /* Vert clair */
+    color: #000; /* Texte noir */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+.tag:hover {
+    background-color: #99e699; /* Vert un peu plus foncé au survol */
+}
+
+.tag span {
+    margin-right: 5px;
+}
+
+.tag .close {
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+#tagInput {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Inclut les bordures et padding dans la hauteur */
+    /*height: 100%; /* S'étend sur toute la hauteur du conteneur */
+    height: 75px ;
+    background-color: rgb(157, 231, 170);
+}
+
+Objet_Invisible {
+    display:none;
+}
+
+/* Survol de ligne pour les tables avec la classe interactive-table */
+.interactive-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Sélection de ligne pour les tables avec la classe interactive-table */
+.TableDesSeries tbody tr.selected {
+    background-color: hsla(232, 87%, 49%, 0.369);
+}
+h2 {
+    position: sticky;
+    top: 0; /* Ajustez selon l'espace souhaité au-dessus */
+    background-color: #fff; /* Fond pour éviter les chevauchements */
+    z-index: 1000; /* Priorité d'affichage au-dessus des autres éléments */
+    padding: 10px;
+    height: auto;
+}
+
+/* Style de la modale */
+.modal {
+    display: none; /* Cachée par défaut */
+    position: fixed;
+    z-index: 1000; /* Au-dessus de tout */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond grisé */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Contenu de la modale */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: move; /* Indicateur visuel pour montrer que la modale peut être déplacée */
+    position: absolute; /* Nécessaire pour le déplacement */
+}
+
+/* Style des boutons */
+.modal-buttons {
+    margin-top: 20px;
+}
+
+.modal-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+}
+
+.modal-btn:hover {
+    background-color: #0056b3;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top: 8px solid #ffffff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.form-group {
+    display: flex;
+    align-items: center; /* Aligne verticalement les éléments */
+    margin-bottom: 10px; /* Espacement entre les lignes */
+}
+
+label {
+    width: 150px; /* Définissez une largeur fixe pour le label */
+    margin-right: 10px; /* Espacement entre le label et l'input */
+    text-align: right; /* Alignement du texte à droite pour un aspect soigné */
+}
+
+input, textarea {
+    flex: 1; /* Permet à l'input et au textarea de prendre le reste de l'espace */
+}
+textarea {
+    min-height: 100px; /* Hauteur minimale */
+    resize: vertical; /* Permet le redimensionnement vertical */
+}
+
+
+.form-group-dessus {
+    display: flex; /* Aligne les éléments en ligne */
+    /*justify-content: space-between; /* Espace entre les groupes */
+}
+
+.textarea-group {
+    display: flex;
+    flex-direction: column; /* Aligne le label au-dessus du textarea */
+    flex:1;
+    margin-right: 5px; /* Espace entre les groupes, ajustez selon vos besoins */
+}
+
+.textarea-group:last-child {
+    margin-right: 0; /* Supprime la marge à droite du dernier groupe */
+}
+.textarea-proportionnelle {
+    width: 100%; /* Le textarea prend toute la largeur du groupe */
+    box-sizing: border-box; /* Inclut la bordure et le padding dans la largeur */
+}
+
+.pseudoLien {
+    border: none; /* Enlever la bordure */
+    background: none; /* Enlever l'arrière-plan */
+    color: blue; /* Couleur du texte comme un lien */
+    text-decoration: underline; /* Souligner le texte */
+    outline: none; /* Enlever le contour au focus */
+    font: inherit; /* Utiliser la police par défaut */
+}
+
+.pseudoLien:focus {
+    outline: none; /* Enlever le contour au focus */
+}
+
+.highlight {
+    background-color: yellow;
+    /* Ajoutez d'autres styles si nécessaire */
+  }
+
