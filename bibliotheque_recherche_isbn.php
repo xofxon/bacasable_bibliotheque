@@ -26,7 +26,7 @@ $genres = $requeteGenres->fetchAll(PDO::FETCH_ASSOC);
     <form id="livreFormulaire" method="POST">
     <div class="form-group">
         <label for="isbn13">ISBN13 :</label>
-        <input type="number" id="isbn13" name="isbn13" maxlength="23" >
+        <input type="text" id="isbn13" name="isbn13" maxlength="23" >
         <label for="isbn10">ISBN10 :</label>
         <input type="text" id="isbn10" name="isbn10" maxlength="20" >
     </div>

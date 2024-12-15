@@ -106,6 +106,7 @@ async function pl_afficherLivreDetails(livre) {
     }
     if (livre.existe==true) {
         idlivre=livre.idlivre;
+        console.log(livre.idlivre)
         valeurRetour=await fa_showModal("Ce livre est déjà référencé. Voulez-vous le modifier?","Question",{yes:true,no:true,cancel:false},{yes: "Oui", no: "Non", cancel: "Abandonner"});
         switch (valeurRetour) {
             case 1:

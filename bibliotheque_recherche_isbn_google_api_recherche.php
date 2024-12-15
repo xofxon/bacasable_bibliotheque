@@ -69,10 +69,14 @@ try {
                 'liencanonique' => $livre['volumeInfo']['canonicalVolumeLink'] ?? '',
                 'couverturedulivre' => $livre['volumeInfo']['imageLinks.thumbnail'] ?? ''
             ];
-            $isbn10=$livre['volumeInfo']['industryIdentifiers'][0]['identifier'];
-            $isbn13=$livre['volumeInfo']['industryIdentifiers'][1]['identifier'];
+            $isbn10 = isset($livre['volumeInfo']['industryIdentifiers'][0]['identifier']) 
+            ? $livre['volumeInfo']['industryIdentifiers'][0]['identifier'] 
+            : null;
+            $isbn13 = isset($livre['volumeInfo']['industryIdentifiers'][1]['identifier']) 
+                    ? $livre['volumeInfo']['industryIdentifiers'][1]['identifier'] 
+                    : null;
             require_once 'bibliotheque_include_recherchedunlivreselonsonisbn.php';
-        } else {
+            } else {
             throw new Exception('Aucun résultat trouvé pour cet ISBN.');
         }
     }

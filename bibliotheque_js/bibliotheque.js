@@ -284,11 +284,14 @@ function pa_chargerLAssociation(id,bSuppressionPossible){
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'bibliotheque_associer_les_livres_aux_series_data.php?id='+id, true);
     xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            // Réponse du serveur
-            var seriesData = JSON.parse(xhr.responseText);
-            pa_AfficheLAssociation(seriesData,bSuppressionPossible);
-        }
+        if (xhr.readyState == 4) {
+            if(xhr.status == 200) {
+                var seriesData = JSON.parse(xhr.responseText);
+                pa_AfficheLAssociation(seriesData,bSuppressionPossible);
+            } else {
+            pa_retour_erreur_ajax(xhr.status); 
+            }
+        }    
     };
     xhr.send();
 }
@@ -325,8 +328,9 @@ function pa_AfficheLAssociation(seriesData,bSuppressionPossible) {
             tag.querySelector(".close").addEventListener("click", function () {
                 // Ajoutez ici une logique pour dissocier le livre de la série si nécessaire,
                 // par exemple envoyer une requête AJAX au serveur pour mettre à jour la base de données.
-
-                tag.remove();
+                const idlivreparserie = tag.getAttribute("idlivreparserie");
+                const idserie = tag.getAttribute("idserie");
+                pa_supprimeLAssociation(idlivreparserie,idserie);
             });
         } else {
             tag.innerHTML = `
@@ -350,6 +354,35 @@ function pa_AfficheLAssociation(seriesData,bSuppressionPossible) {
         tagsContainer.appendChild(tag);
     });
 }
+function pa_supprimeLAssociation(livreserieid,idserie){
+    const data = new FormData();
+    data.append('perimetre', 'Suppression');
+    data.append('livreserieid', livreserieid); // ID du livre depuis l'attribut
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'bibliotheque_associer_les_livres_aux_series_crud.php', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            if(xhr.status == 200) {
+                if (xhr.responseText) {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.succes) {
+                            pa_chargerLAssociation(idserie,true);
+                        } else {
+                            fa_showModal(response.message, title = "Avertissement", showButtons = {yes: false, no: false, cancel: true},{yes: "Continuer", no: "Annuler", cancel: "Vu"});
+                        };
+                    }   catch (e) {
+                    };    
+                };    
+            } else {
+            pa_retour_erreur_ajax(xhr.status); 
+            }
+        }
+    };
+    xhr.send(data);
+}
+
+
 function pa_chargerSeriesTable() {
     pa_afficherSablier();
     var xhr = new XMLHttpRequest();

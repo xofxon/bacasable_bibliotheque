@@ -14,7 +14,7 @@ try {
             if ($idlivreparserie) {
                 // Tentative de suppression de l'association
                 $requete = $pdo->prepare("DELETE FROM livresparserie WHERE idlivreparserie = ?");
-                if ($requete->execute([$livreserieid])) {
+                if ($requete->execute([$idlivreparserie])) {
                     $response['succes'] = true;
                     $response['message'] = 'L\'association a été supprimée avec succès.';
                 } else {
