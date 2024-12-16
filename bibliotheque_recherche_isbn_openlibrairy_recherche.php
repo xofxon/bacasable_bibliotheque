@@ -20,8 +20,8 @@ try {
                 $response['data'] = [
                     'titre' => $title .' ' . $sousTitre,
                     'previsualisation' => $previsualisation,
-                    'isbn10' => $isbn10,
-                    'isbn13' => $isbn13,
+                    'isbn10' => $isbn10 ?? '!!!' . uniqid(),
+                    'isbn13' => $isbn13 ?? '!!!' . uniqid(),
                     'id' => $id,
                     'description' =>'Non disponible',
                     'liencanonique' => $liencanonique,    

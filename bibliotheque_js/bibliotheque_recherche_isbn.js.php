@@ -60,14 +60,16 @@ function pl_searchISBN() {
                                     if (xhr.status == 200) {
                                         if (xhr.responseText) {
                                             try {
-                                                const reponseGoogleBooks = JSON.parse(xhr.responseText);
-                                                const jsonPart = reponseGoogleBooks.json;
+                                                const reponseOpenLibrairy = JSON.parse(xhr.responseText);
+                                                const jsonPart = reponseOpenLibrairy.json;
                                                 const livreDetails = JSON.parse(xhr.responseText);
                                                 document.getElementById('jsonOutput').value = JSON.stringify(jsonPart, null, 2);
                                                 if (livreDetails.succes==true) {
                                                     idOrigine=<?= $idoriginesOL ?>;
                                                     pl_afficherLivreDetails(livreDetails);
                                                 } else {
+                                                    idlivre=0;
+                                                    document.getElementById('voirExistant').style.display = 'none';
                                                     fa_showModal(livreDetails.message,"Attention",{yes:false,no:false,cancel:true},{yes: "Continuer", no: "Annuler", cancel: "Recommencer"},-1)
                                                     pl_resetForm();
                                                 };
@@ -106,6 +108,7 @@ async function pl_afficherLivreDetails(livre) {
     }
     if (livre.existe==true) {
         idlivre=livre.idlivre;
+        document.getElementById('voirExistant').style.display = 'inline-block';
         console.log(livre.idlivre)
         valeurRetour=await fa_showModal("Ce livre est déjà référencé. Voulez-vous le modifier?","Question",{yes:true,no:true,cancel:false},{yes: "Oui", no: "Non", cancel: "Abandonner"});
         switch (valeurRetour) {
@@ -118,6 +121,8 @@ async function pl_afficherLivreDetails(livre) {
             default:
         }
     } else {
+        idlivre=0;
+        document.getElementById('voirExistant').style.display = 'none';
         valeurRetour = await fa_showModal("Ce livre n'est pas encore référencé. Voulez-vous le créer?","Question",{yes:true,no:true,cancel:false},{yes: "Oui", no: "Non", cancel: "Abandonner"},-1);
         switch (valeurRetour) {
             case 1:
@@ -164,7 +169,17 @@ function pl_sauveLivreDetails() {
     }    
     xhr.send(data);
 };
+function pl_ouvreLivreExistant(){
+    if (idlivre!==0){
+        const selectGenre = document.getElementById('genre');
+        const selectedValue = selectGenre.value;
+        const url = `bibliotheque_le_livre.php?id=${idlivre}&${genre}=selectedValue&perimetre=Modification`;
+        console.log(url)
+        const tabTitle = "Modification livre";
+        parent.pl_createDynamicTab(tabTitle, url);
+    }    
 
+}
 function pl_resetForm() {
         const selectGenre = document.getElementById('genre');
         const selectedValue = selectGenre.value;

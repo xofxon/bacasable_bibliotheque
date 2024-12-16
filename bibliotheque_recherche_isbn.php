@@ -21,7 +21,9 @@ $genres = $requeteGenres->fetchAll(PDO::FETCH_ASSOC);
     <button id='getISBN_ws02' title="Rechercher pour les courses." data-titre="Rechercher pour les courses." aria-label="Rechercher pour les courses.">Rechercher pour les courses.</button>
     <button type="button" id="enregistrerBtn">Enregistrer</button>
     <button type="button" id="resetBtn">Réinitialiser</button>
-    </div>
+    <button type="button" id="voirExistant" style="display:none" onclick="pl_ouvreLivreExistant();">Voir le livre existant</button>
+    
+</div>
 
     <form id="livreFormulaire" method="POST">
     <div class="form-group">
