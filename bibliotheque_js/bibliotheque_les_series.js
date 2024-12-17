@@ -43,24 +43,22 @@ function pl_AfficheLaTableDesSeries(seriesData) {
         var idCell = row.insertCell(0);
         idCell.textContent = series['Idseries'];
         idCell.style.display = 'none'; // Rendre la cellule invisible
-        
         row.insertCell(1).textContent = series['Nom'];
-
         var adresseCell = row.insertCell(2);
         var link = document.createElement('a');
         link.href = series['Adresse sur site'];
         link.textContent = series['Adresse sur site'];
         link.target = '_blank'; // Ouvrir dans un nouvel onglet
         adresseCell.appendChild(link);
-        let nombre = +series['Nombre livres présents'];
-        if (nombre !== 0) {
+        let nombre = Number(series['Nombre livres présents']);
+        if (!isNaN(nombre) && nombre !== 0) {
             row.insertCell(3).textContent = series['Nombre livres présents'];
         } else {
             row.insertCell(3).textContent = '';    
         }
         nombre=0;
-        nombre = +series['Nombre livres présents'];
-        if (nombre !==0) {
+        nombre = Number(series['Nombre liste de courses']);
+        if (!isNaN(nombre) && nombre !== 0) {
             row.insertCell(4).textContent = series['Nombre liste de courses'];
         } else {
             row.insertCell(4).textContent = '';    
