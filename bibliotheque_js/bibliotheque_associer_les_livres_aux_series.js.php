@@ -66,11 +66,6 @@ document.addEventListener('mousemove', (e) => {
 document.addEventListener('mouseup', () => {
   isResizing = false;
 });
-
-
-
-
-
 function pl_filtrerLaTabledesLivres(columnIndex, query) {
     const rowsLivres = Array.from(tableLivres.querySelectorAll("tbody tr"));
     if (query.length < 2) {
@@ -447,6 +442,7 @@ let bInitialisationDuMenu=false;
         tagsContainer.appendChild(tag);
         // Enregistrer l'association
         pl_enregistreAssociation(tag);
+        pa_chargerLAssociation(selectedSeriesId,true);
         // Masquer la ligne du livre
         row.style.display = "none";
     });
