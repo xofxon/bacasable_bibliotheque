@@ -14,6 +14,7 @@ $perimetre = $_GET['perimetre'] ?? 'unitaire';
 <h2 id="livresNombre"></h2>
 <!-- Boutons au-dessus de la table -->
 <?php include 'bibliotheque_include_modale.php';?>
+<div style="flex: 0 0 auto;">
 <div class="button-container">
 <?php if ($perimetre === 'unitaire' || $perimetre === 'listeDesCourses'): ?>
         <button class="Bouton_Ajouter add-tab-btn" id="newBookBtn" title="Nouveau livre" data-titre="Ajouter un livre" aria-label="Ajouter un nouveau livre">Nouveau</button>
@@ -54,6 +55,8 @@ $perimetre = $_GET['perimetre'] ?? 'unitaire';
     <?php endif; ?>
 <?php endif; ?>    
 </div>
+</div>
+<div class="table-container">
 <?php if ($perimetre === 'unitaire'  || $perimetre === 'listeDesCourses'): ?>
 <table id="bibliotheque_TableDesLivres" class="TableDesLivres tabletriable tablefiltrable">
     <thead>
@@ -96,7 +99,7 @@ $perimetre = $_GET['perimetre'] ?? 'unitaire';
          <!-- Les lignes seront générées dynamiquement par le JavaScript -->
     </tbody>
 </table>
-
+</div>
 <?php endif; ?>   
 <!-- Désactiver le cache en ajoutant un timestamp aux fichiers JS -->
 <script>

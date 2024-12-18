@@ -14,7 +14,7 @@ require_once 'bibliotheque_informationsdecons.php';
 <?php
 require_once 'bibliotheque_include_ga.php';
 ?>
-<body>
+<body style="overflow: hidden;">
 <!-- Conteneur pour les onglets -->
 <div class="tab-container" id="tab-container"></div>
 <!-- Conteneur pour le contenu des onglets -->

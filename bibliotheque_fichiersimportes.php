@@ -13,6 +13,7 @@
             <button id="TraitementCSVButton">Re-traiter le contenu d'un fichier CSV</button>
             <button id="refreshButton">Rafraîchir la table</button>
         </div>
+        <div class="table-container">
         <table class="tabletriable">
             <thead>
                 <tr>
@@ -25,6 +26,7 @@
             </thead>
             <tbody id="fichiersTableBody"></tbody>
         </table>
+        <div>
     </div>
 
     <div style="flex: 1; overflow-y: auto;">

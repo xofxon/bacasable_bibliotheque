@@ -28,7 +28,7 @@ $date_requete = '23-01-1961 à 5h';
     <button class="Bouton_Filtre" onclick="pa_afficheOuCacheLesFiltres()" title="Afficher/Cacher les filtres" aria-label="Afficher ou cacher les filtres">Afficher/Cacher les filtres</button>
     <button class="Bouton_Filtre" onclick="pa_chargerSeriesTable();" title="Rafraîchir" aria-label="Rafraîchir">Rafraîchir</button>
 </div>
-
+<div class="table-container">
 <table id="bibliotheque_seriesTable" class="TableDesSeries tabletriable">
     <thead>
         <tr>
@@ -45,6 +45,7 @@ $date_requete = '23-01-1961 à 5h';
         <!-- Les lignes seront générées dynamiquement par le JavaScript -->
     </tbody>
 </table>
+</div>
 <?php include 'bibliotheque_include_modale.php';?>
 <!-- Désactiver le cache en ajoutant un timestamp aux fichiers JS -->
 <script src="bibliotheque_js/bibliotheque_les_series.js?v=<?= time(); ?>"></script>

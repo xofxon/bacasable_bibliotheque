@@ -272,6 +272,22 @@ function pa_traite_CSV(perimetre,formdataFichierCSV) {
     traitementRequest.send();
 };
 function pa_afficheOuCacheLesFiltres(){
+    const tableHeaders = document.querySelectorAll('table thead');
+    // Parcourez chaque `thead` pour activer/désactiver la position sticky
+    tableHeaders.forEach(header => {
+        if (header.classList.contains('sticky')) {
+            header.classList.remove('sticky');
+        } else {
+            header.classList.add('sticky');
+        }
+    });
+
+    const filterInputs = document.querySelectorAll('table input');
+    if (filterInputs.length === 0) {
+        console.warn('Aucun input de filtre trouvé dans les tables.');
+        return; // Quitter la fonction si aucun input n'est trouvé
+    }
+    
     filterInputs.forEach(input => {
         if (input.style.display === 'none') {
             input.style.display = 'block';

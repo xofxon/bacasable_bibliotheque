@@ -103,4 +103,8 @@ input[type="text"] {
 .fichiersTableBody tbody tr.selected {
     background-color: hsla(345, 87%, 49%, 0.369);
 }
-
+thead {
+    position: sticky;
+    top: 0; /* Garde l'entête fixe */
+    z-index: 2;
+}
