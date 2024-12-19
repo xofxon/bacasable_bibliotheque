@@ -22,6 +22,7 @@ require_once 'bibliotheque_informationsdecons.php';
 <div class="tags-container" id="tagsContainer">
     
 </div>
+<div class="table-container">
 <div class="container">
     <div class="tables-row">
         <div class="table-container">
@@ -60,7 +61,7 @@ require_once 'bibliotheque_informationsdecons.php';
 
     </div>
 </div>
-
+</div>
 
 
 
