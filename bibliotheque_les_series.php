@@ -27,6 +27,7 @@ $date_requete = '23-01-1961 à 5h';
     <button class="Bouton_Imprimer add-tab-btn" id="printSerieBtn" title="Imprimer la liste des séries" data-titre="Imprimer la liste des séries" aria-label="Imprimer la liste des séries">Impression de la liste</button>
     <button class="Bouton_Filtre" onclick="pa_afficheOuCacheLesFiltres()" title="Afficher/Cacher les filtres" aria-label="Afficher ou cacher les filtres">Afficher/Cacher les filtres</button>
     <button class="Bouton_Filtre" onclick="pa_chargerSeriesTable();" title="Rafraîchir" aria-label="Rafraîchir">Rafraîchir</button>
+    <button class="menu-button" onclick="pl_OuvreRecherche('RakutenGibertJosephSerie')">Rakuten GibertJoseph (Série)</button>        
 </div>
 <div class="table-container">
 <table id="bibliotheque_seriesTable" class="TableDesSeries tabletriable">

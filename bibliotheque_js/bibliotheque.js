@@ -83,14 +83,13 @@ function pa_retour_erreur_ajax(scodeerreur){
             fa_showModal("Erreur "+scodeerreur+" Essayez de prendre contact avec l'administrateur.","Erreur",{yes:false,no:false,cancel:true},{yes: "Continuer", no: "Annuler", cancel: "Ok"})    
     }
 };
-function pa_ouvreLeSite(lien) {
-    if (lien) {
-        window.open(lien, "_blank"); // Ouvre l'URL dans un nouvel onglet
+function pa_ouvreLeSite(url) {
+    if (url) {
+        window.open(url, "_blank"); // Ouvre l'URL dans un nouvel onglet
     } else {
         fa_showModal('Avertissement', 'Aucune URL disponible.',{yes:false,no:false,cancel:true},{yes: "Continuer", no: "Annuler", cancel: "Continuer"});
     }
 }    
-
 function pa_showToast(stext,nduree) {
     var toast = document.getElementById("toast");
     toast.innerText = stext;
@@ -419,5 +418,6 @@ function pa_chargerSeriesTable() {
 
     xhr.send();
 }
-
-
+function fa_supprimerAvantPremiereLettre(chaine) {
+    return chaine.replace(/^[^a-zA-Z]*([a-zA-Z].*)$/, "$1");
+}

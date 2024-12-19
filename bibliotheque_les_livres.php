@@ -30,6 +30,11 @@ $perimetre = $_GET['perimetre'] ?? 'unitaire';
     <div onclick="pl_OuvrirOngletAuKilometre()">Au kilomètre</div>
     <div onclick="pl_afficheoumasqueLaDescription(2)">Masquer/Afficher la description</div>
 </div>
+<?php if ($perimetre === 'listeDesCourses'): ?>
+    <button class="menu-button" onclick="pl_OuvreRecherche('RakutenGibertJosephTitre')">Rakuten GibertJoseph (Titre)</button>
+    <button class="menu-button" onclick="pl_OuvreRecherche('RakutenGibertJosephSerie')">Rakuten GibertJoseph (Série)</button>
+    <button class="menu-button" onclick="pl_OuvreRecherche('ChasseAuxLivresISBN13')">Chasse aux livres (ISBN13)</button>
+<?php endif; ?>           
 <?php else: ?>
     <?php if ($perimetre === 'maListeDesCourses'): ?>
         <button class="menu-button" onclick="pl_OuvrePSeudoMenuContextuel(event)">Autres actions</button>    
@@ -37,7 +42,10 @@ $perimetre = $_GET['perimetre'] ?? 'unitaire';
                 <div onclick="pa_afficheOuCacheLesFiltres()">Afficher/cacher les filtres</div>
                 <div onclick="pl_chargerLivresTable()">Rafraîchir</div>
             </div>
-        </div>    
+        </div>
+        <button class="menu-button" onclick="pl_OuvreRecherche('RakutenGibertJosephTitre')">Rakuten GibertJoseph (Titre)</button>
+        <button class="menu-button" onclick="pl_OuvreRecherche('RakutenGibertJosephSerie')">Rakuten GibertJoseph (Série)</button>
+        <button class="menu-button" onclick="pl_OuvreRecherche('ChasseAuxLivresISBN13')">Chasse aux livres (ISBN13)</button>
     <?php else: ?>
         <button class="Bouton_Modifier add-tab-btn" id="modifyBookBtn" title="Modifier un livre" data-titre="Modifier un livre" aria-label="Modifier un livre">Modification</button>
         <button class="Bouton_Filtre" id="LanceGoogleISBN13" title="ISBN13->Google" data-titre="ISBN13->Google" aria-label="ISBN13->Google">ISBN13->Google</button>

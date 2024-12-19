@@ -32,8 +32,30 @@ function fl_RecupereLaLigneSelectionnee() {
         return null;
     }
 };
+function pl_OuvreRecherche(sperimetre){
+    switch (sperimetre) {
+            case 'RakutenGibertJosephSerie': 
+                selecteserie=fl_getSelectedColumn(1);
+                if (selecteserie) {
+                    let RakutenGibertJoseph = 'https://fr.shopping.rakuten.com/boutique/GibertJoseph/kw/' + selecteserie;
+                    window.open(RakutenGibertJoseph, '_blank', 'noopener,noreferrer');
+                }    
+                break;
 
-
+            default: 
+    }    
+}
+function fl_getSelectedColumn(NnumeroColonne) {
+    // Trouver la ligne sélectionnée
+    const selectedRow = document.querySelector(".TableDesSeries tbody tr.selected");
+    if (selectedRow) {
+        // Récupérer la première cellule de la ligne sélectionnée ()
+        const cellulerecupere = selectedRow.cells[NnumeroColonne].textContent.trim();
+        return cellulerecupere;
+    } else {
+        return null;
+    }
+};
 function pl_AfficheLaTableDesSeries(seriesData) {
     var tableBody = document.getElementById('bibliotheque_seriesTable').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = ''; // Vider le contenu existant

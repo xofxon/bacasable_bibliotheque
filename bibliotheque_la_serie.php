@@ -19,6 +19,8 @@ $genres = $requeteGenres->fetchAll(PDO::FETCH_ASSOC);
 <div style="display: flex; align-items: center;">    
 <h2><?= ucfirst($perimetre) ?> de la série (<?= $idSerie ?>)</h2>
 <div class="button-container" style="margin-left: auto;">
+    <button type="menu-button" onclick="pa_ouvreLeSite('https://bedetheque.com')" id="retourBtn">Bedetheque.com</button>
+    <button type="menu-button" onclick="pa_ouvreLeSite('https://fr.shopping.rakuten.com/boutique/GibertJoseph/kw/'+document.getElementById('nom').value)" id="retourBtn">Rakuten GibertJoseph (Série)</button>
     <button type="button" id="retourBtn">Retour</button>
     <?php if ($perimetre === 'Creation' || $perimetre === 'Modification'): ?>
         <button type="button" id="enregistrerBtn">Enregistrer</button>

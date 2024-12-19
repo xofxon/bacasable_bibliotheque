@@ -4,16 +4,12 @@ $perimetre = $_GET['perimetre'] ?? 'unitaire'; // Valeur par défaut si $perimet
 header('Content-Type: application/javascript');
 ?>
 const table = document.querySelector("#bibliotheque_TableDesLivres");
-/* On ne peut pas industrialiser car le nombre de colonnes varie */
+/* On ne peut pas industrialiser car le nombre de colonnes varie d'un script à l'autre */
 const entetes = document.querySelectorAll("#bibliotheque_TableDesLivres th");
 let lastSelectedRowIndex = null; // Suivre l'indice de la dernière ligne sélectionnée
 entetes.forEach((header, index) => {
     // Ajouter un champ de recherche dans les colonnes de texte
-    <?php if ($perimetre === 'unitaire'): ?>
         if (index === 1 || index === 2 || index === 3 || index === 4 || index === 5 || index === 6 || index === 7 || index === 8) { // Colonnes avec du texte
-    <?php else: ?>     
-        if (index === 1 || index === 2 || index === 3 || index === 4 || index === 5 || index === 6 || index === 7 || index === 8) { // Colonnes avec du texte
-    <?php endif; ?>    
         let input = document.createElement("input");
         input.type = "text";
         input.placeholder = "Rechercher...";
@@ -21,7 +17,6 @@ entetes.forEach((header, index) => {
         input.style.width = "100%";
         input.id="recherche_"+index;
         header.appendChild(input);
-
         input.addEventListener("keyup", function() {
             pl_filtrerLaTable(index, input.value);
         });
@@ -64,6 +59,33 @@ document.addEventListener("click", function() {
     document.getElementById("contextMenu").style.display = "none";
 });
 <?php if ($perimetre === 'unitaire'  || $perimetre === 'listeDesCourses' || $perimetre === 'maListeDesCourses'): ?>
+    function pl_OuvreRecherche(sperimetre){
+        switch (sperimetre) {
+                case 'RakutenGibertJosephTitre': 
+                    selectedtitre=fl_getSelectedColumn(2);
+                    if (selectedtitre) {
+                        selectedtitre=fa_supprimerAvantPremiereLettre(selectedtitre);
+                        let RakutenGibertJoseph = 'https://fr.shopping.rakuten.com/boutique/GibertJoseph/kw/' + selectedtitre;
+                        window.open(RakutenGibertJoseph, '_blank', 'noopener,noreferrer');
+                    }    
+                    break;
+                case 'RakutenGibertJosephSerie': 
+                    selecteserie=fl_getSelectedColumn(1);
+                    if (selecteserie) {
+                        let RakutenGibertJoseph = 'https://fr.shopping.rakuten.com/boutique/GibertJoseph/kw/' + selecteserie;
+                        window.open(RakutenGibertJoseph, '_blank', 'noopener,noreferrer');
+                    }    
+                    break;
+                case 'ChasseAuxLivresISBN13':
+                    selectedISBN13=fl_getSelectedColumn(5);
+                        if (selectedISBN13) {
+                            let url = 'https://www.chasse-aux-livres.fr/prix/' + selectedISBN13;
+                            pa_ouvreLeSite(url);
+                        }    
+                    break;
+                default: 
+        }    
+    }
     function pl_afficheoumasqueLaDescription(columnIndex) {
             const table = document.getElementById("bibliotheque_TableDesLivres");
             const rows = table.rows;
@@ -210,31 +232,17 @@ function pl_MajLivresInfo(count) {
             return null;
         }
     };
-    function fl_getSelectedRowISBN13() {
+    function fl_getSelectedColumn(NnumeroColonne) {
         // Trouver la ligne sélectionnée
         const selectedRow = document.querySelector(".TableDesLivres tbody tr.selected");
         if (selectedRow) {
             // Récupérer la première cellule de la ligne sélectionnée ()
-            const idisbn13 = selectedRow.cells[3].textContent.trim();
-            return idisbn13;
+            const cellulerecupere = selectedRow.cells[NnumeroColonne].textContent.trim();
+            return cellulerecupere;
         } else {
-            console.log("Aucune ligne sélectionnée.");
             return null;
         }
     };
-    function fl_getSelectedRowISBN10() {
-        // Trouver la ligne sélectionnée
-        const selectedRow = document.querySelector(".TableDesLivres tbody tr.selected");
-        if (selectedRow) {
-            // Récupérer la première cellule de la ligne sélectionnée ()
-            const idisbn13 = selectedRow.cells[7].textContent.trim();
-            return idisbn13;
-        } else {
-            console.log("Aucune ligne sélectionnée.");
-            return null;
-        }
-    };
-
     <?php else: ?>
     function fl_RecupereToutesLesLignesSelectionnees() {
         const table = document.getElementById('bibliotheque_TableDesLivres');
@@ -250,31 +258,17 @@ function pl_MajLivresInfo(count) {
 
         return selectedIds;
     };
-    function fl_getSelectedRowISBN13() {
+    function fl_getSelectedColumn(NnumeroColonne) {
         // Trouver la ligne sélectionnée
         const selectedRow = document.querySelector(".TableDesLivres tbody tr.selected");
         if (selectedRow) {
             // Récupérer la première cellule de la ligne sélectionnée ()
-            const idisbn13 = selectedRow.cells[3].textContent.trim();
-            return idisbn13;
+            const cellulerecupere = selectedRow.cells[NnumeroColonne].textContent.trim();
+            return cellulerecupere;
         } else {
-            console.log("Aucune ligne sélectionnée.");
             return null;
         }
     };
-    function fl_getSelectedRowISBN10() {
-        // Trouver la ligne sélectionnée
-        const selectedRow = document.querySelector(".TableDesLivres tbody tr.selected");
-        if (selectedRow) {
-            // Récupérer la première cellule de la ligne sélectionnée ()
-            const idisbn10 = selectedRow.cells[7].textContent.trim();
-            return idisbn10;
-        } else {
-            console.log("Aucune ligne sélectionnée.");
-            return null;
-        }
-    };
-
 <?php endif; ?>
 
 function pl_initialiserLesTris() {
@@ -380,30 +374,30 @@ function pl_init_unitaire(){
     const LanceGoogleISBN13=document.getElementById('LanceGoogleISBN13');
     if (LanceGoogleISBN13) {
         document.getElementById('LanceGoogleISBN13').addEventListener('click', function () {
-        const selectedisbn13 = fl_getSelectedRowISBN13();
+        const selectedisbn13 = fl_getSelectedColumn(3);
         if (selectedisbn13) {
             const url = 'https://www.google.com/search?q=' + selectedisbn13;
-            window.open(url, '_blank');
+            pa_ouvreLeSite(url);
         }
     }    
     )};
     const LanceGoogleISBN10=document.getElementById('LanceGoogleISBN10');
     if (LanceGoogleISBN10) {
         document.getElementById('LanceGoogleISBN10').addEventListener('click', function () {
-        const selectedisbn10 = fl_getSelectedRowISBN10();
+        const selectedisbn10 = fl_getSelectedColumn(7);
         if (selectedisbn10) {
             const url = 'https://www.google.com/search?q=' + selectedisbn10;
-            window.open(url, '_blank');
+            pa_ouvreLeSite(url);
         }
     }    
     )};
     const LanceGoogleTitre=document.getElementById('LanceGoogleTitre');
     if (LanceGoogleTitre) {
         document.getElementById('LanceGoogleTitre').addEventListener('click', function () {
-        const selectedisbn10 = fl_getSelectedRowISBN10();
+        const selectedisbn10 = fl_getSelectedColumn(7);
         if (selectedisbn10) {
             const url = 'https://www.google.com/search?q=' + selectedisbn10;
-            window.open(url, '_blank');
+            pa_ouvreLeSite(url);
         }
     }    
     )};
@@ -508,30 +502,30 @@ function pl_OuvrirOngletAuKilometre(){
     const LanceGoogleISBN13=document.getElementById('LanceGoogleISBN13');
     if (LanceGoogleISBN13) {
         document.getElementById('LanceGoogleISBN13').addEventListener('click', function () {
-        const selectedisbn13 = fl_getSelectedRowISBN13();
+        const selectedisbn13 = fl_getSelectedColumn(3);
         if (selectedisbn13) {
             const url = 'https://www.google.com/search?q=' + selectedisbn13;
-            window.open(url, '_blank');
+            pa_ouvreLeSite(url);
         }
     }    
     )};
     const LanceGoogleISBN10=document.getElementById('LanceGoogleISBN10');
     if (LanceGoogleISBN10) {
         document.getElementById('LanceGoogleISBN10').addEventListener('click', function () {
-        const selectedisbn10 = fl_getSelectedRowISBN10();
+        const selectedisbn10 = fl_getSelectedColumn(7);
         if (selectedisbn10) {
             const url = 'https://www.google.com/search?q=' + selectedisbn10;
-            window.open(url, '_blank');
+            pa_ouvreLeSite(url);
         }
     }    
     )};
     const LanceAmazonISBN13=document.getElementById('LanceAmazonISBN13');
     if (LanceAmazonISBN13) {
         document.getElementById('LanceAmazonISBN13').addEventListener('click', function () {
-        const selectedisbn13 = fl_getSelectedRowISBN13();
+        const selectedisbn13 = fl_getSelectedColumn(3);
         if (selectedisbn13) {
             let urlAmazon = 'https://www.amazon.fr/s?k=' + selectedisbn13;
-            window.open(urlAmazon, '_blank', 'noopener,noreferrer');
+            pa_ouvreLeSite(url);
         }
     }    
     )};
@@ -539,7 +533,7 @@ function pl_OuvrirOngletAuKilometre(){
     const LanceAmazonetGoogleISBN13=document.getElementById('LanceAmazonetGoogleISBN13');
     if (LanceAmazonetGoogleISBN13) {
         document.getElementById('LanceAmazonetGoogleISBN13').addEventListener('click', function () {
-        const selectedisbn13 = fl_getSelectedRowISBN13();
+        const selectedisbn13 = fl_getSelectedColumn(3);
         if (selectedisbn13) {
 
 
@@ -547,11 +541,9 @@ function pl_OuvrirOngletAuKilometre(){
             //  Code non fonctionnel, car n'ouvre qu'un seul onglet ou nouveau navigateur (selon usage de focus=no ou pas)
             let urlAmazon = 'https://www.amazon.fr/s?k=' + selectedisbn13;
             let urlGoogle = 'https://www.google.com/search?q=' + selectedisbn13;
-            window.open(urlAmazon, '_blank', 'noopener,noreferrer,focus=no');
-            //window.open(urlAmazon, '_blank', 'noopener,noreferrer');
+            pa_ouvreLeSite(urlAmazon);
             setTimeout(() => {
-                window.open(urlGoogle, '_blank', 'noopener,noreferrer,focus=no');
-                //window.open(urlGoogle, '_blank', 'noopener,noreferrer');
+                pa_ouvreLeSite(urlGoogle);
             }, 100); // 100 ms de délai
         }
     }    

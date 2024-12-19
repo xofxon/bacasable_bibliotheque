@@ -231,7 +231,7 @@ function pl_LanceGoogleISBN13(){
         const selectedisbn13 = document.getElementById('isbn13').value
         if (selectedisbn13) {
             const url = 'https://www.google.com/search?q=' + selectedisbn13;
-            window.open(url, '_blank');
+            pa_ouvreLeSite(url);
         }
     };
 }
@@ -241,7 +241,7 @@ function pl_LanceGoogleISBN10(){
         const selectedisbn10 = document.getElementById('isbn10').value
         if (selectedisbn10) {
             const url = 'https://www.google.com/search?q=' + selectedisbn10;
-            window.open(url, '_blank');
+            pa_ouvreLeSite(url);
         }
     };
 }
@@ -250,16 +250,16 @@ function pl_LanceAmazonISBN13(){
     if (LanceAmazonISBN13) {
         const selectedisbn13 = document.getElementById('isbn13').value
         if (selectedisbn13) {
-            let urlAmazon = 'https://www.amazon.fr/s?k=' + selectedisbn13;
-            window.open(urlAmazon, '_blank', 'noopener,noreferrer');
+            let url = 'https://www.amazon.fr/s?k=' + selectedisbn13;
+            pa_ouvreLeSite(url);
         }
 
     };
 }
 function pl_LanceAmazonISBN10(selectedisbn10){
         if (selectedisbn10) {
-            let urlAmazon = 'https://www.amazon.fr/s?k=' + selectedisbn10;
-            window.open(urlAmazon, '_blank', 'noopener,noreferrer');
+            let url = 'https://www.amazon.fr/s?k=' + selectedisbn10;
+            pa_ouvreLeSite(url);
         }
 }
 
@@ -273,11 +273,9 @@ function pl_LanceAmazonetGoogleISBN13(){
             //  Code non fonctionnel, car n'ouvre qu'un seul onglet ou nouveau navigateur (selon usage de focus=no ou pas)
             let urlAmazon = 'https://www.amazon.fr/s?k=' + selectedisbn13;
             let urlGoogle = 'https://www.google.com/search?q=' + selectedisbn13;
-            window.open(urlAmazon, '_blank', 'noopener,noreferrer,focus=no');
-            //window.open(urlAmazon, '_blank', 'noopener,noreferrer');
+            pa_ouvreLeSite(urlAmazon);
             setTimeout(() => {
-                window.open(urlGoogle, '_blank', 'noopener,noreferrer,focus=no');
-                //window.open(urlGoogle, '_blank', 'noopener,noreferrer');
+                pa_ouvreLeSite(urlGoogle);
             }, 100); // 100 ms de délai
         }
     }    
@@ -310,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const url = this.value;
         if (filter_var($url, FILTER_VALIDATE_URL) && (strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0)) {
             if (url) {
-                window.open(url, '_blank'); // Ouvre l'URL dans un nouvel onglet
+                pa_ouvreLeSite(url);
             }
         }    
     }
