@@ -2,7 +2,6 @@
 try {
     $table = "livres";
     $condition = "ISBN13='$isbn13' and ISBN13 !=''";
-    $response['message']=$condition;
     $nombre = fa_compte($table, $condition);
     switch ($nombre){
         case 0 :
@@ -38,7 +37,6 @@ if ($nombre ==0 ){
         $table = "livres";
         $condition = "ISBN10='$isbn10' and ISBN10 !=''";
         $nombre = fa_compte($table, $condition);
-        $response['message'].=''.$condition;
         switch ($nombre){
             case 0 :
                 $response['existe'] = false;

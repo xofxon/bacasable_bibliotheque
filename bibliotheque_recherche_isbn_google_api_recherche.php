@@ -49,7 +49,7 @@ try {
             $response['idlivre'] = 0;
             $response['data'] = [
                 'titre' => $livre['volumeInfo']['title'] ?? 'Titre non disponible',
-                'soustitre' => $livre['volumeInfo']['subtitle'] ?? 'Sous-Titre non disponible',
+                'soustitre' => $livre['volumeInfo']['subtitle'] ?? '',
                 'auteurs' => implode(', ', $livre['volumeInfo']['authors'] ?? []),
                 'description' => $livre['volumeInfo']['description'] ?? 'Description non disponible',
                 'isbn10' => $livre['volumeInfo']['industryIdentifiers'][0]['identifier'] ?? '???' . uniqid(),

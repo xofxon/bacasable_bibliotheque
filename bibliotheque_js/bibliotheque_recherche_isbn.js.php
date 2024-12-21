@@ -96,7 +96,7 @@ function pl_searchISBN() {
     xhr.send();
 }
 async function pl_afficherLivreDetails(livre) {
-    document.getElementById('titre').value = livre.data.titre
+    document.getElementById('titre').value = livre.data.titre+' '+livre.data.soustitre;
     document.getElementById('isbn10').value = livre.data.isbn10;
     document.getElementById('isbn13').value = livre.data.isbn13;
     document.getElementById('liencanonique').value = livre.data.liencanonique;

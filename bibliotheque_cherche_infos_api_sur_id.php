@@ -75,6 +75,7 @@ try {
                 $book = $responseData["ISBN:$isbn"];
                 // Extraction des informations
                 $titre = $book['title'] ?? 'Titre non disponible';
+
                 $auteurs = isset($book['authors']) ? implode(", ", array_column($book['authors'], 'name')) : 'Auteur(s) non disponible(s)';
                 $previsualisation=$book['url'] ?? '';
                 if (empty($isbn10) && isset($book['identifiers']) && is_array($book['identifiers']['isbn_10']) && isset($book['identifiers']['isbn_10'][0])) {
@@ -170,6 +171,9 @@ try {
             }
             $olid = $googleData['items'][0]['id'];
             $titre = $googleData['items'][0]['volumeInfo']['title'] ?? null;
+            if (isset($googleData['items'][0]['volumeInfo']['subtitle'])) {
+                $titre .= $googleData['items'][0]['volumeInfo']['subtitle'];
+              }
             $isbn10= $googleData['items'][0]['volumeInfo']['industryIdentifiers'][0]['identifier'] ?? 'isbn10 Non disponible-'.$dateRecuperation;
             //  On a déjà vu ds ISBN10 en plusieurs exemplaires ...
             try {
